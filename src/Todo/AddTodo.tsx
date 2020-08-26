@@ -5,7 +5,7 @@ function useInputValue(defaultValue: string = "") {
   return {
     bind: {
       value,
-      onChange: (event: any) => setValue(event.target.value),
+      onChange: (event: any) => setValue(event.target.value), // note sure here anout "any"
     },
     clear: () => setValue(""),
     value: () => value,
@@ -16,7 +16,6 @@ interface Props {
 }
 function AddTodo(props: Props) {
   const { onCreate } = props;
-  //  const [ value, setValue ] = useState('');
   const input = useInputValue("");
 
   function submitHandler(event: SyntheticEvent) {
@@ -25,7 +24,6 @@ function AddTodo(props: Props) {
     if (input.value().trim()) {
       onCreate(input.value());
       input.clear();
-      //setValue('')
     }
   }
 
